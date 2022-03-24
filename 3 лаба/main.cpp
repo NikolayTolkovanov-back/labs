@@ -16,17 +16,16 @@ double myPrFunction(double x) {
 
 double findRoot(double (*f)(double), double (*df)(double), double a, double b, double eps)
 {
-    double x = a, x1;
+    double x = a, x0 = a;
     int steps = 0;
 
-    while (abs(x1 - x) > eps)
+    do
     {
-        // Как сделать правильный while?
-        // cout << "x:" << x << " x1: " << x1 << endl;
         steps++;
-        x = x1;
-        x1 = x - f(x) / df(x);
+        x0 = x;
+        x = x0 - f(x) / df(x);
     }
+    while (fabs(x0 - x) > eps);
 
     cout << "x: " << b << endl;
     cout << "f(x): " << f(b) << endl;
@@ -45,7 +44,7 @@ double teoreticSteps(double a, double b, double eps)
 
 int main()
 {
-    double a, b, eps = 0.0000001;
+    double a, b, eps = 0.0001;
     double x_array[100], y_array[100], intervals;
     double counter = 0.1;
     int start_time, end_time;

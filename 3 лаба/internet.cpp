@@ -1,31 +1,26 @@
 #include <iostream>
+#include <iomanip>
+#include <math.h>
+
 using namespace std;
-const int N = 20;
-//Функция для полинома:
-double F(double x)
+double Rech1(double x)
 {
-    return x * x - 9 * x + 14;
+	return pow(x,3)+2*pow(x,2)+3*x+5;
 }
-//Функция поиска корня:
-double FindRoot(double (*f)(double), double x0, int n)
+double Rech2(double x)
 {
-    double x = x0, df, h = 0.00001;
-    df = (f(x + h) - f(x)) / h;
-
-    for (int i = 1; i <= n; i++) {
-        x = x - f(x) / df;
-    }
-
-    return x;
+	return 3*pow(x,2)+4*x+3;
 }
 int main()
 {
-    //Начальное приближение и корень:
-    double x0, x;
-    cout << "initial x0 = ";
-    cin >> x0;
-    //Поиск решения:
-    x = FindRoot(F, x0, N);
-    cout << "x = " << x << endl;
-    return 0;
+	double x = -2, x0 = -2;
+	double e = 0.000001;
+	do
+	{
+		x0 = x;
+		x = x0 - Rech1(x)/Rech2(x);
+	}
+	while (fabs(x0-x)>e);
+	cout << setprecision (6)<<x;
+	cin.get();
 }
