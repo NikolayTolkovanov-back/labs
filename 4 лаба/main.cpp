@@ -1,5 +1,4 @@
 // f(x) = cos(x^2 * cos(x)); a = 5; b = 7; n = 4, 5, 7
-// метод трапеции
 #include <iostream>
 #include <cmath>
 #include <ctime>
@@ -64,7 +63,7 @@ double simpson(double a, double b, int n) {
 int main()
 {
     int a = 1, b = 2;
-    int n = 1000;
+    int n = 10;
     int start_time, end_time;
 
     start_time = clock();
